@@ -1,7 +1,5 @@
 const { BetaAnalyticsDataClient } = require('@google-analytics/data');
 const { GoogleAuth } = require('google-auth-library');
-const path = require('path');
-const fs = require('fs');
 
 const propertyId = '353439430';
 
@@ -15,8 +13,11 @@ exports.handler = async function (event, context) {
     };
   }
 
+  // ✅ Load service account credentials from environment variable
+  const credentials = JSON.parse(process.env.GOOGLE_SERVICE_ACCOUNT_JSON);
+
   const auth = new GoogleAuth({
-    keyFile: path.resolve(__dirname, '../../service-account.json'),
+    credentials,
     scopes: 'https://www.googleapis.com/auth/analytics.readonly',
   });
 
