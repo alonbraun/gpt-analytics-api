@@ -1,6 +1,6 @@
 const { BetaAnalyticsDataClient } = require('@google-analytics/data');
 
-const propertyId = '353439430';
+const propertyId = '487143549';
 
 exports.handler = async function (event, context) {
   const { start_date, end_date } = JSON.parse(event.body || '{}');
