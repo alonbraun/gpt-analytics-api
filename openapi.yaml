@@ -1,0 +1,37 @@
+openapi: 3.0.0
+info:
+  title: GA4 Traffic API
+  version: 1.0.0
+paths:
+  /getTrafficSummary:
+    post:
+      summary: Get website traffic by country
+      operationId: getTrafficSummary
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                start_date:
+                  type: string
+                end_date:
+                  type: string
+      responses:
+        '200':
+          description: Analytics data
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  results:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        country:
+                          type: string
+                        activeUsers:
+                          type: string
