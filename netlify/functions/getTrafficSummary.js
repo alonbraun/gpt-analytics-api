@@ -1,5 +1,4 @@
 const { BetaAnalyticsDataClient } = require('@google-analytics/data');
-const { GoogleAuth } = require('google-auth-library');
 
 const propertyId = '353439430';
 
@@ -13,17 +12,15 @@ exports.handler = async function (event, context) {
     };
   }
 
-  // ✅ Load service account credentials from environment variable
-  const credentials = JSON.parse(process.env.GOOGLE_SERVICE_ACCOUNT_JSON);
-
-  const auth = new GoogleAuth({
-    credentials,
-    scopes: 'https://www.googleapis.com/auth/analytics.readonly',
-  });
-
-  const analyticsDataClient = new BetaAnalyticsDataClient({ auth });
-
   try {
+    // Load service account credentials from environment variable
+    const credentials = JSON.parse(process.env.GOOGLE_SERVICE_ACCOUNT_JSON);
+
+    // Create client with credentials
+    const analyticsDataClient = new BetaAnalyticsDataClient({
+      credentials,
+    });
+
     const [response] = await analyticsDataClient.runReport({
       property: `properties/${propertyId}`,
       dateRanges: [{ startDate: start_date, endDate: end_date }],
