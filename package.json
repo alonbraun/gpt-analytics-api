@@ -2,10 +2,8 @@
   "name": "gpt-analytics-api",
   "version": "1.0.0",
   "main": "index.js",
-"dependencies": {
-  "@google-analytics/data": "^0.14.0",
-  "google-auth-library": "^9.0.0"
-}
+  "dependencies": {
+    "@google-analytics/data": "^0.14.0",
+    "google-auth-library": "^9.0.0"
   }
 }
-
