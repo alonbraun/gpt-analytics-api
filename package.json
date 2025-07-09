@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "dependencies": {
-  "@google-analytics/data": "^0.13.2",
+    "@google-analytics/data": "0.13.1",
     "google-auth-library": "^9.0.0"
   }
 }
